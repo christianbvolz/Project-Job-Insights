@@ -57,7 +57,13 @@ def filter_by_industry(jobs, industry):
 
 def get_max_salary(path):
     jobs = read(path)
-    return jobs
+    max_salary = 0
+    for job in jobs:
+        if job["max_salary"].isnumeric():
+            job_salary = float(job["max_salary"])
+            if job_salary > max_salary:
+                max_salary = job_salary
+    return max_salary
 
 
 def get_min_salary(path):
